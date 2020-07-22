@@ -1,11 +1,16 @@
 package com.in28minutes.rest.webservices.restfulwebservices.filtering;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /*STATIC FILTERING= En el caso de que algún contenido de la petición no deba darse al usuario puede usarse JsonIgnoreProperties,
  *indicando los valores no devueltos, esto se hace antes de crear la clase*/
-@JsonIgnoreProperties(value={"field1","field2"})
+
+
+
+//@JsonIgnoreProperties(value={"field1","field2"}) /*Esto es para filtros estáticos*/
+@JsonFilter("SomeBeanFilter")
 public class SomeBean {
     private String field1;
     private String field2;
@@ -16,6 +21,7 @@ public class SomeBean {
     private String field3;
 
     public SomeBean(String field1, String field2, String field3) {
+        super();
         this.field1 = field1;
         this.field2 = field2;
         this.field3 = field3;
